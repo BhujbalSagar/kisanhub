@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="text-center p-3 mb-5 bg-white rounded">
+    <div class="header">
+      <h3 class="text-center">Kisan Hub Assignment</h3>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-select placeholder="Select Country" [(ngModel)]="selectedCountry" name="data" (ngModelChange)="changeCountry(selectedCountry)">
+            <mat-option *ngFor="let data of Country" [value]="data.name">
+              {{data.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>Your Selected Country is: {{selectedCountry}} </p>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-select placeholder="Select Whether" [(ngModel)]="selectedWhether" name="whetherData" (ngModelChange)="changeWhether(selectedWhether)">
+            <mat-option *ngFor="let whether of Whether" [value]="whether.name">
+              {{whether.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>Your Selected Whether is: {{selectedWhether}} </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-select placeholder="Select Month1" [(ngModel)]="selectedMonth1" name="month1" (ngModelChange)="changeMonth1(selectedMonth1)">
+            <mat-option *ngFor="let date of month" [value]="date.month">
+              {{date.month}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-select placeholder="Select Year1" [(ngModel)]="selectedYear1" name="year1" (ngModelChange)="changeYear1(selectedYear1)">
+            <mat-option *ngFor="let date of year" [value]="date.year">
+              {{date.year}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-select placeholder="Select Month2" [(ngModel)]="selectedMonth2" name="month2" (ngModelChange)="changeMonth2(selectedMonth2)">
+            <mat-option *ngFor="let date of month" [value]="date.month">
+              {{date.month}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-select placeholder="Select Year2" [(ngModel)]="selectedYear2" name="year2" (ngModelChange)="changeYear2(selectedYear2)">
+            <mat-option *ngFor="let dates of year" [value]="dates.year">
+              {{dates.year}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- show chart -->
+  <div class="col-md-12" *ngIf="showChartFlag">
+    <h3 class="text-center">Graph</h3>
+    <canvas baseChart [chartType]="'bar'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="true">
+    </canvas>
+  </div>
+</div>
